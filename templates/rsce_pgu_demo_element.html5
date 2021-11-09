@@ -1,0 +1,112 @@
+<?php
+// Bei Textfeldern kann man die Werte direkt übernehmen.
+$ueberschrift = $this->ueberschrift;
+$beschreibung = $this->beschreibung;
+
+// Bei Bildern genügt meist der Pfad zur Quelldatei.
+// Es sollte aber überprüft werden, ob überhaupt ein Wert gesetzt wurde.
+$bildSrc = ($this->bild) ? $this->getImageObject($this->bild)->src : "";
+$bildAlt = $ueberschrift;
+$bildTitel = $ueberschrift;
+
+// Source-Pfade von PDFs werden über ein Insert-Tag geladen.
+// Die Syntax funktioniert bei allen Datei-Typen, auch Bildern.
+$pdfSrc = '{{file::' . $this->pdf . '}}';
+
+// Ein Linkziel wird durch die ID der entsprechenden Seite dargestellt.
+// Um den tatsächlichen Pfad zu bekommen, muss ein Contao-Inserttag verwendet werden (s. unten).
+// Mehr zu Inserttags: https://docs.contao.org/books/manual/4.4/en/04-managing-content/insert-tags.html
+// Auch hier sollte überprüft werden, dass ein Wert vorhanden ist.
+$linkziel = ($this->linkziel) ? $this->linkziel : 0;
+
+// Auswahlfelder
+$radiobuttons = $this->radiobuttons;          // Wert des Radiobuttons
+$dropdown = $this->dropdown;                  // Wert des Dropdowns
+$checkboxMultiple = $this->checkboxMultiple;  // Array mit den angehakten Optionen
+$checkboxSingle = $this->checkboxSingle;      // String "1" oder "0"
+
+// Spezielles
+$optionWizard = $this->optionWizard;                  // Array
+$listWizard = $this->listWizard;                      // Array
+$tableWizard = $this->tableWizard;                    // Array von Arrays
+$textzeileMitDropdown = $this->textzeileMitDropdown;  // Array mit "unit" und "value"
+?>
+
+<div class="demoelement">
+    <h2>Demoelement</h2>
+    <p>Dieses Element präsentiert mehrere Feldtypen, die mit RSCE möglich sind.</p>
+
+    <h5>Überschrift:</h5>
+    <pre><?php var_dump($ueberschrift); ?></pre>
+
+    <h5>Beschreibung:</h5>
+    <pre><?php var_dump($beschreibung); ?></pre>
+
+    <h5>Bild-Dateipfad:</h5>
+    <pre><?php var_dump($bildSrc); ?></pre>
+
+    <h5>PDF-Dateipfad:</h5>
+    <pre><?php var_dump($pdfSrc); ?></pre>
+
+    <h5>Linkziel (ID)</h5>
+    <pre><?php var_dump($linkziel); ?></pre>
+
+    <h5>Linkziel (Pfad)</h5>
+    <pre>{{link_url::<?php echo $linkziel; ?>}}</pre>
+
+    <h5>Radio-Buttons:</h5>
+    <pre><?php var_dump($radiobuttons); ?></pre>
+
+    <h5>Dropdown:</h5>
+    <pre><?php var_dump($dropdown); ?></pre>
+
+    <h5>Checkbox Multiple:</h5>
+    <pre><?php var_dump($checkboxMultiple); ?></pre>
+
+    <h5>Checkbox Single:</h5>
+    <pre><?php var_dump($checkboxSingle); ?></pre>
+
+    <h5>Liste:</h5>
+    <ul>
+        <?php foreach ($this->liste as $index => $item): ?>
+            <li>
+                <pre>#<?php echo $index ?>: <?php var_dump($item->listeneintrag); ?></pre>
+            </li>
+            <?php // Wird kein Index benötigt, kann der Teil "$index => " einfach weggelassen werden. ?>
+        <?php endforeach; ?>
+    </ul>
+
+    <h5>Option-Wizard:</h5>
+    <pre><?php var_dump($optionWizard); ?></pre>
+
+    <h5>List-Wizard:</h5>
+    <pre><?php var_dump($listWizard); ?></pre>
+
+    <h5>Tabelle:</h5>
+    <table>
+        <thead>
+        <tr>
+            <th></th>
+            <?php
+            $anzahlSpalten = sizeof($tableWizard[0]);
+            for ($spalteIndex = 1; $spalteIndex <= $anzahlSpalten; $spalteIndex++): ?>
+                <th>Spalte <?php echo $spalteIndex; ?></th>
+            <?php endfor; ?>
+        </tr>
+        </thead>
+        <?php foreach ($tableWizard as $zeileIndex => $zeile): ?>
+            <tr>
+                <td><strong>Zeile <?php echo $zeileIndex + 1 ?>&nbsp;</strong></td>
+                <?php foreach ($zeile as $zelle): ?>
+                    <td>
+                        <pre><?php var_dump($zelle); ?></pre>
+                    </td>
+                <?php endforeach; ?>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+
+    <h5>Textzeile mit Dropdown:</h5>
+    <pre><?php var_dump($textzeileMitDropdown); ?></pre>
+
+</div>
