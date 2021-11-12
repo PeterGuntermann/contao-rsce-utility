@@ -1,40 +1,40 @@
 <?php
-// Bei Textfeldern kann man die Werte direkt übernehmen.
+// For text fields you can apply the values directly.
 $headline = $this->headline;
 $description = $this->description;
 
-// Bei Bildern genügt meist der Pfad zur Quelldatei.
-// Es sollte aber überprüft werden, ob überhaupt ein Wert gesetzt wurde.
+// For images, the path to the source file is usually sufficient.
+// However, it should be checked whether a value has been set at all.
 $imageSrc = ($this->image) ? $this->getImageObject($this->image)->src : "";
 $imageAlt = $headline;
 $imageTitel = $headline;
 
-// Source-Pfade von PDFs werden über ein Insert-Tag geladen.
-// Die Syntax funktioniert bei allen Datei-Typen, auch Bildern.
+// Source paths of PDFs are loaded via an insert tag.
+// The syntax works for all file types, including images.
 $pdfSrc = '{{file::' . $this->pdf . '}}';
 
-// Ein Linkziel wird durch die ID der entsprechenden Seite dargestellt.
-// Um den tatsächlichen Pfad zu bekommen, muss ein Contao-Inserttag verwendet werden (s. unten).
-// Mehr zu Inserttags: https://docs.contao.org/books/manual/4.4/en/04-managing-content/insert-tags.html
-// Auch hier sollte überprüft werden, dass ein Wert vorhanden ist.
+// A link target is represented by the ID of the corresponding page.
+// To get the actual path, a Contao insert tag must be used (see below).
+// More about insert tags: https://docs.contao.org/books/manual/4.4/en/04-managing-content/insert-tags.html
+// Again, it should be checked that a value exists.
 $linkTarget = ($this->linkTarget) ? $this->linkTarget : 0;
 
 // Selection fields
-$radioSelection = $this->radioSelection;          // Wert des Radiobuttons
-$dropdownSelection = $this->dropdownSelection;                  // Wert des Dropdowns
-$checkboxMultiple = $this->checkboxMultiple;  // Array mit den angehakten Optionen
-$checkboxSingle = $this->checkboxSingle;      // String "1" oder "0"
+$radioSelection = $this->radioSelection;       // Value of the radio selection
+$dropdownSelection = $this->dropdownSelection; // Value of the dropdown
+$checkboxMultiple = $this->checkboxMultiple;   // Array with the checked options
+$checkboxSingle = $this->checkboxSingle;       // String "1" or "0"
 
 // Spezielles
 $optionWizard = $this->optionWizard;                  // Array
 $listWizard = $this->listWizard;                      // Array
-$tableWizard = $this->tableWizard;                    // Array von Arrays
-$textLineWithDropdown = $this->textLineWithDropdown;  // Array mit "unit" und "value"
+$tableWizard = $this->tableWizard;                    // Array of arrays
+$textLineWithDropdown = $this->textLineWithDropdown;  // Array with "unit" and "value"
 ?>
 
 <div class="demo-element">
     <h2>Demo element</h2>
-    <p>Dieses Element präsentiert mehrere Feldtypen, die mit RSCE möglich sind.</p>
+    <p>This element presents several field types that are possible with RSCE.</p>
 
     <h5>Headline:</h5>
     <pre><?php var_dump($headline); ?></pre>
@@ -45,19 +45,19 @@ $textLineWithDropdown = $this->textLineWithDropdown;  // Array mit "unit" und "v
     <h5>Image file path:</h5>
     <pre><?php var_dump($imageSrc); ?></pre>
 
-    <h5>PDF-Dateipfad:</h5>
+    <h5>PDF file path:</h5>
     <pre><?php var_dump($pdfSrc); ?></pre>
 
-    <h5>Linkziel (ID)</h5>
+    <h5>Link target (ID)</h5>
     <pre><?php var_dump($linkTarget); ?></pre>
 
-    <h5>Linkziel (Pfad)</h5>
+    <h5>Link target (path)</h5>
     <pre>{{link_url::<?php echo $linkTarget; ?>}}</pre>
 
-    <h5>Radio-Buttons:</h5>
+    <h5>Radio selection:</h5>
     <pre><?php var_dump($radioSelection); ?></pre>
 
-    <h5>Dropdown:</h5>
+    <h5>Dropdown selection:</h5>
     <pre><?php var_dump($dropdownSelection); ?></pre>
 
     <h5>Checkbox Multiple:</h5>
@@ -66,47 +66,47 @@ $textLineWithDropdown = $this->textLineWithDropdown;  // Array mit "unit" und "v
     <h5>Checkbox Single:</h5>
     <pre><?php var_dump($checkboxSingle); ?></pre>
 
-    <h5>Liste:</h5>
+    <h5>List:</h5>
     <ul>
-        <?php foreach ($this->liste as $index => $item): ?>
+        <?php foreach ($this->list as $index => $item): ?>
             <li>
-                <pre>#<?php echo $index ?>: <?php var_dump($item->listeneintrag); ?></pre>
+                <pre>#<?php echo $index ?>: <?php var_dump($item->listEntry); ?></pre>
             </li>
-            <?php // Wird kein Index benötigt, kann der Teil "$index => " einfach weggelassen werden. ?>
+            <?php // If an index is not needed, one can simply leave out the "$index => " part. ?>
         <?php endforeach; ?>
     </ul>
 
-    <h5>Option-Wizard:</h5>
+    <h5>Option wizard:</h5>
     <pre><?php var_dump($optionWizard); ?></pre>
 
-    <h5>List-Wizard:</h5>
+    <h5>List wizard:</h5>
     <pre><?php var_dump($listWizard); ?></pre>
 
-    <h5>Tabelle:</h5>
+    <h5>Table:</h5>
     <table>
         <thead>
         <tr>
             <th></th>
             <?php
-            $anzahlSpalten = sizeof($tableWizard[0]);
-            for ($spalteIndex = 1; $spalteIndex <= $anzahlSpalten; $spalteIndex++): ?>
-                <th>Spalte <?php echo $spalteIndex; ?></th>
+            $numberOfColumns = sizeof($tableWizard[0]);
+            for ($columnIndex = 1; $columnIndex <= $numberOfColumns; $columnIndex++): ?>
+                <th>Column <?php echo $columnIndex; ?></th>
             <?php endfor; ?>
         </tr>
         </thead>
-        <?php foreach ($tableWizard as $zeileIndex => $zeile): ?>
+        <?php foreach ($tableWizard as $rowIndex => $row): ?>
             <tr>
-                <td><strong>Zeile <?php echo $zeileIndex + 1 ?>&nbsp;</strong></td>
-                <?php foreach ($zeile as $zelle): ?>
+                <td><strong>Row <?php echo $rowIndex + 1 ?>&nbsp;</strong></td>
+                <?php foreach ($row as $cell): ?>
                     <td>
-                        <pre><?php var_dump($zelle); ?></pre>
+                        <pre><?php var_dump($cell); ?></pre>
                     </td>
                 <?php endforeach; ?>
             </tr>
         <?php endforeach; ?>
     </table>
 
-    <h5>Textzeile mit Dropdown:</h5>
+    <h5>Text line with dropdown:</h5>
     <pre><?php var_dump($textLineWithDropdown); ?></pre>
 
 </div>

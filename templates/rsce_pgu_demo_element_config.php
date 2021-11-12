@@ -74,7 +74,7 @@ $listEntry['label'] = array(
 $list['label'] = array('My list', 'This is a comment on how to use the list.');
 $list['elementLabel'] = array('en' => 'My list entry %s');
 $list['fields'] = array(
-    'list entry' => $listEntry
+    'listEntry' => $listEntry
 );
 
 $optionWizard = include('fields/option-wizard.field.php');
