@@ -1,13 +1,13 @@
 <?php
 // Bei Textfeldern kann man die Werte direkt übernehmen.
-$ueberschrift = $this->ueberschrift;
-$beschreibung = $this->beschreibung;
+$headline = $this->headline;
+$description = $this->description;
 
 // Bei Bildern genügt meist der Pfad zur Quelldatei.
 // Es sollte aber überprüft werden, ob überhaupt ein Wert gesetzt wurde.
-$bildSrc = ($this->bild) ? $this->getImageObject($this->bild)->src : "";
-$bildAlt = $ueberschrift;
-$bildTitel = $ueberschrift;
+$imageSrc = ($this->image) ? $this->getImageObject($this->image)->src : "";
+$imageAlt = $headline;
+$imageTitel = $headline;
 
 // Source-Pfade von PDFs werden über ein Insert-Tag geladen.
 // Die Syntax funktioniert bei allen Datei-Typen, auch Bildern.
@@ -17,11 +17,11 @@ $pdfSrc = '{{file::' . $this->pdf . '}}';
 // Um den tatsächlichen Pfad zu bekommen, muss ein Contao-Inserttag verwendet werden (s. unten).
 // Mehr zu Inserttags: https://docs.contao.org/books/manual/4.4/en/04-managing-content/insert-tags.html
 // Auch hier sollte überprüft werden, dass ein Wert vorhanden ist.
-$linkziel = ($this->linkziel) ? $this->linkziel : 0;
+$linkTarget = ($this->linkTarget) ? $this->linkTarget : 0;
 
-// Auswahlfelder
-$radiobuttons = $this->radiobuttons;          // Wert des Radiobuttons
-$dropdown = $this->dropdown;                  // Wert des Dropdowns
+// Selection fields
+$radioSelection = $this->radioSelection;          // Wert des Radiobuttons
+$dropdownSelection = $this->dropdownSelection;                  // Wert des Dropdowns
 $checkboxMultiple = $this->checkboxMultiple;  // Array mit den angehakten Optionen
 $checkboxSingle = $this->checkboxSingle;      // String "1" oder "0"
 
@@ -29,36 +29,36 @@ $checkboxSingle = $this->checkboxSingle;      // String "1" oder "0"
 $optionWizard = $this->optionWizard;                  // Array
 $listWizard = $this->listWizard;                      // Array
 $tableWizard = $this->tableWizard;                    // Array von Arrays
-$textzeileMitDropdown = $this->textzeileMitDropdown;  // Array mit "unit" und "value"
+$textLineWithDropdown = $this->textLineWithDropdown;  // Array mit "unit" und "value"
 ?>
 
-<div class="demoelement">
-    <h2>Demoelement</h2>
+<div class="demo-element">
+    <h2>Demo element</h2>
     <p>Dieses Element präsentiert mehrere Feldtypen, die mit RSCE möglich sind.</p>
 
-    <h5>Überschrift:</h5>
-    <pre><?php var_dump($ueberschrift); ?></pre>
+    <h5>Headline:</h5>
+    <pre><?php var_dump($headline); ?></pre>
 
-    <h5>Beschreibung:</h5>
-    <pre><?php var_dump($beschreibung); ?></pre>
+    <h5>Description:</h5>
+    <pre><?php var_dump($description); ?></pre>
 
-    <h5>Bild-Dateipfad:</h5>
-    <pre><?php var_dump($bildSrc); ?></pre>
+    <h5>Image file path:</h5>
+    <pre><?php var_dump($imageSrc); ?></pre>
 
     <h5>PDF-Dateipfad:</h5>
     <pre><?php var_dump($pdfSrc); ?></pre>
 
     <h5>Linkziel (ID)</h5>
-    <pre><?php var_dump($linkziel); ?></pre>
+    <pre><?php var_dump($linkTarget); ?></pre>
 
     <h5>Linkziel (Pfad)</h5>
-    <pre>{{link_url::<?php echo $linkziel; ?>}}</pre>
+    <pre>{{link_url::<?php echo $linkTarget; ?>}}</pre>
 
     <h5>Radio-Buttons:</h5>
-    <pre><?php var_dump($radiobuttons); ?></pre>
+    <pre><?php var_dump($radioSelection); ?></pre>
 
     <h5>Dropdown:</h5>
-    <pre><?php var_dump($dropdown); ?></pre>
+    <pre><?php var_dump($dropdownSelection); ?></pre>
 
     <h5>Checkbox Multiple:</h5>
     <pre><?php var_dump($checkboxMultiple); ?></pre>
@@ -107,6 +107,6 @@ $textzeileMitDropdown = $this->textzeileMitDropdown;  // Array mit "unit" und "v
     </table>
 
     <h5>Textzeile mit Dropdown:</h5>
-    <pre><?php var_dump($textzeileMitDropdown); ?></pre>
+    <pre><?php var_dump($textLineWithDropdown); ?></pre>
 
 </div>

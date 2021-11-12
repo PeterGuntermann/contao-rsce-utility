@@ -71,66 +71,66 @@ $listEntry['label'] = array(
     'Content of the list entry',
     'This entry can be any field type, even another list'
 );
-$list['label'] = array(
-    'My list',
-    'This is a comment on how to use the list.'
-);
-$list['elementLabel'] = array('de' => 'My list entry %s');
+$list['label'] = array('My list', 'This is a comment on how to use the list.');
+$list['elementLabel'] = array('en' => 'My list entry %s');
 $list['fields'] = array(
     'list entry' => $listEntry
 );
 
 $optionWizard = include('fields/option-wizard.field.php');
-$optionWizard['label'] = array('Mein Optionen-Wizard', 'Erklärungen zum Wizard.');
+$optionWizard['label'] = array('My option wizard', 'Explanations of the wizard.');
 
 $listWizard = include('fields/list-wizard.field.php');
-$listWizard['label'] = array('Mein List-Wizard', 'Erklärungen zum Wizard.');
+$listWizard['label'] = array('My list wizard', 'Explanations of the wizard.');
 
 $tableWizard = include('fields/table-wizard.field.php');
-$tableWizard['label'] = array('Mein Table-Wizard', 'Füge beliebig Zeilen und Spalten hinzu.');
+$tableWizard['label'] = array('My table wizard', 'Add an arbitrary number of rows and columns.');
 
-$textLineMitDropdown = include('fields/text-line-with-dropdown.field.php');
-$textLineMitDropdown['label'] = array('Text-Zeile mit Dropdown', 'Der Text und die Auswahl im Dropdown gehören unmittelbar zusammen.');
-$textLineMitDropdown['options'] = array(
-    'tage' => 'Tage',
-    'stunden' => 'Stunden',
-    'minuten' => 'Minuten',
+$textLineWithDropdown = include('fields/text-line-with-dropdown.field.php');
+$textLineWithDropdown['label'] = array(
+    'Text line with dropdown',
+    'The text and the selection in the dropdown belong directly together.'
+);
+$textLineWithDropdown['options'] = array(
+    'days' => 'Days',
+    'hours' => 'Hours',
+    'minutes' => 'Minutes',
 );
 
 
 // Definition of the groups
-$GRUPPE_1 = array('inputType' => 'group');
-$GRUPPE_1['label'] = array('Gruppe 1: Texte und Bilder', 'Beschreibung von Gruppe 1.');
+$group1 = array('inputType' => 'group');
+$group1['label'] = array('Group 1: Texts and images', 'Description of group 1.');
 
-$GRUPPE_2 = array('inputType' => 'group');
-$GRUPPE_2['label'] = array('Gruppe 2: Linkziel, Radiobuttons, Dropdown', 'Beschreibung von Gruppe 2.');
+$group2 = array('inputType' => 'group');
+$group2['label'] = array('Group 2: Link target, Radio selection, Dropdown selection', 'Description of group 2.');
 
-$GRUPPE_3 = array('inputType' => 'group');
-$GRUPPE_3['label'] = array('Gruppe 3: Spezielles');
+$group3 = array('inputType' => 'group');
+$group3['label'] = array('Group 3: Special');
 
 
 // Arrange fields and groups
 $dataContainerArray['fields'] = array(
-    'gruppe_1' => $GRUPPE_1,
-    'ueberschrift' => $textLine,
-    'beschreibung' => $textArea,
-    'bild' => $imageFile,
+    'group1' => $group1,
+    'headline' => $textLine,
+    'description' => $textArea,
+    'image' => $imageFile,
     'pdf' => $pdfFile,
 
-    'gruppe_2' => $GRUPPE_2,
-    'linkziel' => $linkTarget,
-    'radiobuttons' => $radioSelection,
-    'dropdown' => $dropdownSelection,
+    'group2' => $group2,
+    'linkTarget' => $linkTarget,
+    'radioSelection' => $radioSelection,
+    'dropdownSelection' => $dropdownSelection,
     'checkboxMultiple' => $checkboxMultiple,
     'checkboxSingle' => $checkboxSingle,
 
-    'liste' => $list,  // Remark: Lists automatically create their own groups.
+    'list' => $list,  // Remark: Lists automatically create their own groups.
 
-    'gruppe_3' => $GRUPPE_3,
+    'group3' => $group3,
     'optionWizard' => $optionWizard,
     'listWizard' => $listWizard,
     'tableWizard' => $tableWizard,
-    'textzeileMitDropdown' => $textLineMitDropdown,
+    'textLineWithDropdown' => $textLineWithDropdown,
 );
 
 return $dataContainerArray;
