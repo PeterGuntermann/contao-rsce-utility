@@ -1,76 +1,84 @@
 <?php
-// Grundlegende Konfiguration des Elements
+// Basic configuration of the element
 $dataContainerArray = array(
-    'label' => array('Demo-Element', 'Demonstration einiger Eingabemöglichkeiten'),
+    'label' => array('Demo element', 'Demonstration of some input options'),
     'types' => array('content', 'module'),
     'contentCategory' => 'Sandbox',
     'moduleCategory' => 'Sandbox',
 );
 
 
-// Definition der Felder
-$textzeile = include('fields/textzeile.field.php');
-$textzeile['label'] = array('Überschrift');
+// Definition of the fields
+$textLine = include('fields/text-line.field.php');
+$textLine['label'] = array('Headline');
 
-$textblock = include('fields/textblock.field.php');
-$textblock['label'] = array(
-    'Beschreibung',
-    'Beachte bei der Eingabe dies und das und jenes!'
+$textArea = include('fields/text-area.field.php');
+$textArea['label'] = array(
+    'Description',
+    'When typing, keep this and that in mind.'
 );
 
-$bilddatei = include('fields/bilddatei.field.php');
-$bilddatei['label'] = array(
-    'Bild zum Demoelement',
-    'Die Datei sollte die Ausmaße 42x42 Pixel haben.'
+$imageFile = include('fields/image-file.field.php');
+$imageFile['label'] = array(
+    'Image for the demo element',
+    'The file should have the dimensions 42x42 pixels.'
 );
 
-$pdfdatei = include('fields/pdf-datei.field.php');
-$pdfdatei['label'] = array(
-    'PDF-Datei',
-    'Ein beliebiges PDF-Dokument im Ordner "media".'
+$pdfFile = include('fields/pdf-file.field.php');
+$pdfFile['label'] = array(
+    'PDF file',
+    'An arbitrary PDF document.'
 );
 
-$linkziel = include('fields/linkziel.field.php');
+$linkTarget = include('fields/link-target.field.php');
 
-$radiobuttons = include('fields/radiobuttons.field.php');
-$radiobuttons['label'] = array('Demo-Radiobuttons', 'Beschreibung, was die Buttons tun sollen.');
-$radiobuttons['options'] = array(
-    'Wert 1' => 'Auswahloption 1',
-    'Wert 2' => 'Auswahloption 2',
-    'Wert 3' => 'Auswahloption 3',
+$radioSelection = include('fields/radio-selection.field.php');
+$radioSelection['label'] = array(
+    'Demo radio button selection',
+    'Description what the buttons should do.'
 );
-$radiobuttons['default'] = 'Wert 2';
+$radioSelection['options'] = array(
+    'Value 1' => 'Option 1',
+    'Value 2' => 'Option 2',
+    'Value 3' => 'Option 3',
+);
+$radioSelection['default'] = 'Value 2';
 
-$dropdown = include('fields/dropdown.field.php');
-$dropdown['options'] = array(
-    'Wert 1' => 'Auswahloption 1',
-    'Wert 2' => 'Auswahloption 2',
-    'Wert 3' => 'Auswahloption 3',
+$dropdownSelection = include('fields/dropdown-selection.field.php');
+$dropdownSelection['options'] = array(
+    'Value 1' => 'Option 1',
+    'Value 2' => 'Option 2',
+    'Value 3' => 'Option 3',
 );
 
 $checkboxMultiple = include('fields/checkbox-multiple.field.php');
 $checkboxMultiple['options'] = array(
-    'Auswahloption 1',
-    'Auswahloption 2',
-    'Auswahloption 3',
+    'Option 1',
+    'Option 2',
+    'Option 3',
 );
 
 $checkboxSingle = include('fields/checkbox-single.field.php');
-$checkboxSingle['label'] = array('Mein Checkbox-Label', 'Meine Erklärung der Checkbox');
+$checkboxSingle['label'] = array(
+    'My Checkbox label',
+    'My explanation of the checkbox'
+);
 $checkboxSingle['default'] = false;
 
-$liste = include('fields/liste.field.php');
-$listeneintrag = include('fields/textzeile.field.php');
-$listeneintrag['label'] = array(
-    'Inhalt des Listeneintrags',
-    'kann jedes beliebige andere field sein, sogar wieder eine Liste'
+$list = include('fields/list.field.php');
+$listEntry = include('fields/text-line.field.php');
+$listEntry['label'] = array(
+    'Content of the list entry',
+    'This entry can be any field type, even another list'
 );
-$liste['label'] = array('Meine Liste', 'Kommentar mit Anweisungen zur Benutzung der Liste.');
-$liste['elementLabel'] = array('de' => 'Mein Listeneintrag %s');
-$liste['fields'] = array(
-    'listeneintrag' => $listeneintrag
+$list['label'] = array(
+    'My list',
+    'This is a comment on how to use the list.'
 );
-
+$list['elementLabel'] = array('de' => 'My list entry %s');
+$list['fields'] = array(
+    'list entry' => $listEntry
+);
 
 $optionWizard = include('fields/option-wizard.field.php');
 $optionWizard['label'] = array('Mein Optionen-Wizard', 'Erklärungen zum Wizard.');
@@ -81,16 +89,16 @@ $listWizard['label'] = array('Mein List-Wizard', 'Erklärungen zum Wizard.');
 $tableWizard = include('fields/table-wizard.field.php');
 $tableWizard['label'] = array('Mein Table-Wizard', 'Füge beliebig Zeilen und Spalten hinzu.');
 
-$textzeileMitDropdown = include('fields/textzeile-mit-dropdown.field.php');
-$textzeileMitDropdown['label'] = array('Text-Zeile mit Dropdown', 'Der Text und die Auswahl im Dropdown gehören unmittelbar zusammen.');
-$textzeileMitDropdown['options'] = array(
+$textLineMitDropdown = include('fields/text-line-with-dropdown.field.php');
+$textLineMitDropdown['label'] = array('Text-Zeile mit Dropdown', 'Der Text und die Auswahl im Dropdown gehören unmittelbar zusammen.');
+$textLineMitDropdown['options'] = array(
     'tage' => 'Tage',
     'stunden' => 'Stunden',
     'minuten' => 'Minuten',
 );
 
 
-// Definition der Gruppen
+// Definition of the groups
 $GRUPPE_1 = array('inputType' => 'group');
 $GRUPPE_1['label'] = array('Gruppe 1: Texte und Bilder', 'Beschreibung von Gruppe 1.');
 
@@ -101,28 +109,28 @@ $GRUPPE_3 = array('inputType' => 'group');
 $GRUPPE_3['label'] = array('Gruppe 3: Spezielles');
 
 
-// Arrangieren der Felder und Gruppen
+// Arrange fields and groups
 $dataContainerArray['fields'] = array(
     'gruppe_1' => $GRUPPE_1,
-    'ueberschrift' => $textzeile,
-    'beschreibung' => $textblock,
-    'bild' => $bilddatei,
-    'pdf' => $pdfdatei,
+    'ueberschrift' => $textLine,
+    'beschreibung' => $textArea,
+    'bild' => $imageFile,
+    'pdf' => $pdfFile,
 
     'gruppe_2' => $GRUPPE_2,
-    'linkziel' => $linkziel,
-    'radiobuttons' => $radiobuttons,
-    'dropdown' => $dropdown,
+    'linkziel' => $linkTarget,
+    'radiobuttons' => $radioSelection,
+    'dropdown' => $dropdownSelection,
     'checkboxMultiple' => $checkboxMultiple,
     'checkboxSingle' => $checkboxSingle,
 
-    'liste' => $liste,  // Anmerkung: Listen erzeugen automatisch eine eigene Gruppe
+    'liste' => $list,  // Remark: Lists automatically create their own groups.
 
     'gruppe_3' => $GRUPPE_3,
     'optionWizard' => $optionWizard,
     'listWizard' => $listWizard,
     'tableWizard' => $tableWizard,
-    'textzeileMitDropdown' => $textzeileMitDropdown,
+    'textzeileMitDropdown' => $textLineMitDropdown,
 );
 
 return $dataContainerArray;
