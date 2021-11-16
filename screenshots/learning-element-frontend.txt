@@ -1,0 +1,14 @@
+Learning element
+This element is intended for developers who want to learn how to create their own RSCE elements.
+
+The following text was entered from the field:
+
+My terrific content
+
+Debugging can be done in this way:
+
+    string(19) "My terrific content"
+or very detailed so:
+
+    
+^ array:103 [▼]
