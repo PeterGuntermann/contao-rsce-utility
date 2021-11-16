@@ -1,0 +1,19 @@
+<?php
+// It makes sense to define all the required variables beforehand in order to keep the HTML template lean:
+$example_text = $this->example_text;
+?>
+
+<h2>Learning element</h2>
+<p>This element is intended for developers who want to learn how to create their own RSCE elements.</p>
+
+<p>The following text was entered from the field: </p>
+<p><?php echo $example_text ?></p>
+
+<p>Debugging can be done in this way:</p>
+<pre>
+    <?php var_dump($example_text)  // This is a PHP functionality. ?>
+</pre>
+<p>or very detailed so:</p>
+<pre>
+    <?php $this->showTemplateVars() // This is a Contao functionality. ?>
+</pre>

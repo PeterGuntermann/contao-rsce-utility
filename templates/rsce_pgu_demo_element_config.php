@@ -1,10 +1,11 @@
 <?php
+
 // Basic configuration of the element
 $dataContainerArray = array(
     'label' => array('Demo element', 'Demonstration of some input options'),
     'types' => array('content', 'module'),
-    'contentCategory' => 'Sandbox',
-    'moduleCategory' => 'Sandbox',
+    'contentCategory' => 'My custom content category',
+    'moduleCategory' => 'My custom module category',
 );
 
 

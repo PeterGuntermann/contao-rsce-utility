@@ -25,7 +25,7 @@ $dropdownSelection = $this->dropdownSelection; // Value of the dropdown
 $checkboxMultiple = $this->checkboxMultiple;   // Array with the checked options
 $checkboxSingle = $this->checkboxSingle;       // String "1" or "0"
 
-// Spezielles
+// Special
 $optionWizard = $this->optionWizard;                  // Array
 $listWizard = $this->listWizard;                      // Array
 $tableWizard = $this->tableWizard;                    // Array of arrays
